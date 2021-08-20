@@ -7,6 +7,7 @@ import java.util.Date;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.batch.item.ItemProcessor;
+import org.springframework.beans.factory.annotation.Value;
 
 import com.google.common.primitives.Ints;
 import com.mi.datamerge.model.ReportModel;
@@ -15,6 +16,9 @@ import com.mi.datamerge.vo.ReportXmlDTO;
 public class XmlItemProcessor implements ItemProcessor<ReportXmlDTO, ReportModel> {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CsvItemProcessor.class);
+    
+    @Value("${date.format}")
+    private String dateFormat;
 
     @Override
     public ReportModel process(final ReportXmlDTO line) throws Exception {
@@ -31,7 +35,7 @@ public class XmlItemProcessor implements ItemProcessor<ReportXmlDTO, ReportModel
 			Date requestTime = null;
 			
 			try {
-				SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss zzz");
+				SimpleDateFormat df = new SimpleDateFormat(dateFormat);
 				requestTime = df.parse(line.getRequestTime());
 			} catch (ParseException e) {
 				LOGGER.debug("Error parsing date {} ", line.getRequestTime());
