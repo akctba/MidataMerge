@@ -49,7 +49,7 @@ public class JobCompletionNotificationListener extends JobExecutionListenerSuppo
 			System.out.println("===================\n");
 
 			String query = "SELECT clientAddress, clientGuid, requestTime, serviceGuid, retriesRequest, "
-					+ "packetsRequested, packetsServiced, maxHoleSize " + "FROM report WHERE packetsServiced > 0 "
+					+ "packetsRequested, packetsServiced, maxHoleSize FROM report WHERE packetsServiced <> 0 "
 					+ "ORDER BY requestTime";
 			List<ReportModel> results = jdbcTemplate.query(query,
 					(rs, row) -> new ReportModel(rs.getString(1), rs.getString(2), rs.getTimestamp(3), rs.getString(4),
