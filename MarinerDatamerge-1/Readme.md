@@ -5,7 +5,7 @@
 ## Running on IDE
 * Clone the project
 * Import on Eclipse/SpringToolSuite as Maven project
-* Start service MarineDatamerge on Boot Dashboard
+* Start service MarineDatamerge-1 on Boot Dashboard
 
 ## Prerequisites
 
@@ -16,9 +16,11 @@ You need to install the following tools if you want to run this application:
 
 ## Running the Application With Maven
 
-You can run the application by using the following command:
+Its possible to run the application by using the following command, on the project's folder:
 
     mvn clean spring-boot:run
+
+The result will be exported to a file. Path will be displayed on the terminal.
 
 
 # Tools and libraries
