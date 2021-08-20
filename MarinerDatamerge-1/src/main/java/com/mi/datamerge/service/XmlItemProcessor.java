@@ -1,4 +1,4 @@
-package com.mi.datamerge;
+package com.mi.datamerge.service;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
