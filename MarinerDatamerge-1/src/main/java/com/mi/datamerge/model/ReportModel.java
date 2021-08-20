@@ -1,8 +1,8 @@
-package com.mi.datamerge;
+package com.mi.datamerge.model;
 
 import java.util.Date;
 
-public class ReportDTO {
+public class ReportModel {
 	
 	private String clientAddress;
 	private String clientGuid;
@@ -13,11 +13,11 @@ public class ReportDTO {
 	private Integer packetsServiced;
 	private Integer maxHoleSize;
 	
-	public ReportDTO() {
+	public ReportModel() {
 		super();
 	}
 	
-	public ReportDTO(String clientAddress, String clientGuid, Date requestTime, String serviceGuid,
+	public ReportModel(String clientAddress, String clientGuid, Date requestTime, String serviceGuid,
 			Integer retriesRequest, Integer packetsRequested, Integer packetsServiced, Integer maxHoleSize) {
 		super();
 		this.clientAddress = clientAddress;
@@ -93,8 +93,11 @@ public class ReportDTO {
 	public void setMaxHoleSize(Integer maxHoleSize) {
 		this.maxHoleSize = maxHoleSize;
 	}
-	
-	
-	
+
+	@Override
+	public String toString() {
+		return "ReportModel [clientAddress=" + clientAddress + ", clientGuid=" + clientGuid + ", requestTime="
+				+ requestTime + "]";
+	}
 
 }

@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
+import com.mi.datamerge.model.ReportModel;
+
 @Component
 public class JobCompletionNotificationListener extends JobExecutionListenerSupport {
     private static final Logger LOGGER = LoggerFactory.getLogger(JobCompletionNotificationListener.class);
@@ -26,7 +28,7 @@ public class JobCompletionNotificationListener extends JobExecutionListenerSuppo
             
             LOGGER.info(">>> JOB FINISHED! Time to verify the results");
             String query = "SELECT clientAddress, clientGuid, requestTime, serviceGuid, retriesRequest, packetsRequested, packetsServiced, maxHoleSize FROM report ORDER BY requestTime";
-            jdbcTemplate.query(query, (rs, row) -> new ReportDTO(rs.getString(1), rs.getString(2), rs.getDate(3), rs.getString(4),
+            jdbcTemplate.query(query, (rs, row) -> new ReportModel(rs.getString(1), rs.getString(2), rs.getDate(3), rs.getString(4),
             		rs.getInt(5), rs.getInt(6), rs.getInt(7), rs.getInt(8)))
             .forEach(line -> LOGGER.info("Found < {} > in the database.", line));
             

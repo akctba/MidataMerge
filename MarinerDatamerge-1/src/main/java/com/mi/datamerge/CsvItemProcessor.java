@@ -10,17 +10,15 @@ import org.slf4j.LoggerFactory;
 import org.springframework.batch.item.ItemProcessor;
 
 import com.google.common.primitives.Ints;
-import com.mi.datamerge.vo.ReportVO;
+import com.mi.datamerge.model.ReportModel;
+import com.mi.datamerge.vo.ReportCsvDTO;
 
-public class CsvItemProcessor implements ItemProcessor<ReportVO, ReportDTO> {
+public class CsvItemProcessor implements ItemProcessor<ReportCsvDTO, ReportModel> {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CsvItemProcessor.class);
 
     @Override
-    public ReportDTO process(final ReportVO csvLine) throws Exception {
-//        String brand = coffee.getBrand().toUpperCase();
-//        String origin = coffee.getOrigin().toUpperCase();
-//        String chracteristics = coffee.getCharacteristics().toUpperCase();
+    public ReportModel process(final ReportCsvDTO csvLine) throws Exception {
     	String clientAddress = csvLine.getClientAddress();
     	String clientGuid = csvLine.getClientGuid();
     	String serviceGuid = csvLine.getServiceGuid();
@@ -39,7 +37,7 @@ public class CsvItemProcessor implements ItemProcessor<ReportVO, ReportDTO> {
 			LOGGER.debug("Error parsing date {} ", csvLine.getRequestTime());
 		}
 
-        ReportDTO transformed = new ReportDTO(clientAddress,  clientGuid,  requestTime,  serviceGuid,
+        ReportModel transformed = new ReportModel(clientAddress,  clientGuid,  requestTime,  serviceGuid,
     			 retriesRequest,  packetsRequested,  packetsServiced,  maxHoleSize);
         LOGGER.debug("Converting ( {} ) into ( {} )", csvLine, transformed);
 

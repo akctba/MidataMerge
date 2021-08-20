@@ -1,21 +1,40 @@
 package com.mi.datamerge.vo;
 
-public class ReportCsvDTO {
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name="report")
+public class ReportXmlDTO {
+	
 	
 	private String clientAddress;
+	
+	
 	private String clientGuid;
+	
+	
 	private String requestTime;
+	
+	
 	private String serviceGuid;
+	
+	
 	private String retriesRequest;
+	
+	
 	private String packetsRequested;
+	
+	
 	private String packetsServiced;
+	
+	
 	private String maxHoleSize;
 	
-	public ReportCsvDTO() {
+	public ReportXmlDTO() {
 		super();
 	}
 	
-	public ReportCsvDTO(String clientAddress, String clientGuid, String requestTime, String serviceGuid,
+	public ReportXmlDTO(String clientAddress, String clientGuid, String requestTime, String serviceGuid,
 			String retriesRequest, String packetsRequested, String packetsServiced, String maxHoleSize) {
 		super();
 		this.clientAddress = clientAddress;
@@ -28,6 +47,7 @@ public class ReportCsvDTO {
 		this.maxHoleSize = maxHoleSize;
 	}
 
+	@XmlElement(name="client-address")
 	public String getClientAddress() {
 		return clientAddress;
 	}
@@ -36,6 +56,7 @@ public class ReportCsvDTO {
 		this.clientAddress = clientAddress;
 	}
 
+	@XmlElement(name="client-guid")
 	public String getClientGuid() {
 		return clientGuid;
 	}
@@ -44,6 +65,7 @@ public class ReportCsvDTO {
 		this.clientGuid = clientGuid;
 	}
 
+	@XmlElement(name="request-time")
 	public String getRequestTime() {
 		return requestTime;
 	}
@@ -52,6 +74,7 @@ public class ReportCsvDTO {
 		this.requestTime = requestTime;
 	}
 
+	@XmlElement(name="service-guid")
 	public String getServiceGuid() {
 		return serviceGuid;
 	}
@@ -60,6 +83,7 @@ public class ReportCsvDTO {
 		this.serviceGuid = serviceGuid;
 	}
 
+	@XmlElement(name="retries-request")
 	public String getRetriesRequest() {
 		return retriesRequest;
 	}
@@ -68,6 +92,7 @@ public class ReportCsvDTO {
 		this.retriesRequest = retriesRequest;
 	}
 
+	@XmlElement(name="packets-requested")
 	public String getPacketsRequested() {
 		return packetsRequested;
 	}
@@ -76,6 +101,7 @@ public class ReportCsvDTO {
 		this.packetsRequested = packetsRequested;
 	}
 
+	@XmlElement(name="packets-serviced")
 	public String getPacketsServiced() {
 		return packetsServiced;
 	}
@@ -84,6 +110,7 @@ public class ReportCsvDTO {
 		this.packetsServiced = packetsServiced;
 	}
 
+	@XmlElement(name="max-hole-size")
 	public String getMaxHoleSize() {
 		return maxHoleSize;
 	}
@@ -91,8 +118,4 @@ public class ReportCsvDTO {
 	public void setMaxHoleSize(String maxHoleSize) {
 		this.maxHoleSize = maxHoleSize;
 	}
-	
-	
-	
-
 }
