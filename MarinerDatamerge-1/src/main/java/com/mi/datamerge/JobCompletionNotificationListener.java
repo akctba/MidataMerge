@@ -52,13 +52,14 @@ public class JobCompletionNotificationListener extends JobExecutionListenerSuppo
 					+ "packetsRequested, packetsServiced, maxHoleSize " + "FROM report WHERE packetsServiced > 0 "
 					+ "ORDER BY requestTime";
 			List<ReportModel> results = jdbcTemplate.query(query,
-					(rs, row) -> new ReportModel(rs.getString(1), rs.getString(2), rs.getDate(3), rs.getString(4),
+					(rs, row) -> new ReportModel(rs.getString(1), rs.getString(2), rs.getTimestamp(3), rs.getString(4),
 							rs.getInt(5), rs.getInt(6), rs.getInt(7), rs.getInt(8)));
 			// results.forEach(line -> LOGGER.info("Found < {} > in the database.", line));
 
 			ByteArrayInputStream reportToCSV = CsvHelper.reportToCSV(results);
 
 			try {
+				// Taking the JAR path to export
 				String jarPath = getClass().getProtectionDomain().getCodeSource().getLocation().toURI().getPath();
 				jarPath = jarPath.substring(0, jarPath.lastIndexOf("/") + 1) + fileOutput;
 
