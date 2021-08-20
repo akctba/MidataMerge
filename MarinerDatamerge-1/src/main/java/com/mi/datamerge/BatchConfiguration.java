@@ -26,6 +26,8 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 
 import com.mi.datamerge.model.ReportModel;
+import com.mi.datamerge.service.CsvItemProcessor;
+import com.mi.datamerge.service.XmlItemProcessor;
 import com.mi.datamerge.vo.ReportCsvDTO;
 import com.mi.datamerge.vo.ReportXmlDTO;
 
